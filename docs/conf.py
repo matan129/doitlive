@@ -20,8 +20,8 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = u"doitlive"
-copyright = u"2014-{0:%Y}".format(dt.datetime.utcnow())
+project = "doitlive"
+copyright = "2014-{0:%Y}".format(dt.datetime.utcnow())
 
 version = release = doitlive.__version__
 

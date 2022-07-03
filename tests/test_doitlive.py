@@ -44,7 +44,7 @@ class TestPlayer:
         assert 'echo "Hello"' in result.output
 
     def test_session_with_unicode(self, runner):
-        user_input = random_string(len(u'echo "H´l¬ø ∑ø®ld"'))
+        user_input = random_string(len('echo "H´l¬ø ∑ø®ld"'))
         result = run_session(runner, "unicode.session", user_input)
         assert result.exit_code == 0
 

@@ -80,7 +80,9 @@ class TestPlayerTerminalInteractiveShell:
         shell.next_keys([KeyPress(Keys.Backspace)])
         assert shell.current_command_keys() == "+1"
 
-    def test_on_feed_key_does_not_increment_pos_past_length_of_command(self, make_shell):
+    def test_on_feed_key_does_not_increment_pos_past_length_of_command(
+        self, make_shell
+    ):
         shell = make_shell(commands=["abcde"], speed=2)
         shell.next_keys([KeyPress("x"), KeyPress("x")])
         assert shell.current_command_pos == len("abcde") - 1
