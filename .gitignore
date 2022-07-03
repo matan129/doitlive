@@ -50,3 +50,5 @@ include/
 pip-selfcheck.json
 #other
 local/
+.idea
+doitlive.iml
