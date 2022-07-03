@@ -12,7 +12,6 @@ from click import echo as click_echo
 from click.termui import strip_ansi
 
 from doitlive.exceptions import ConfigurationError
-from doitlive.compat import PY2
 from doitlive.version_control import (
     get_current_git_branch,
     get_current_hg_bookmark,
@@ -70,13 +69,7 @@ class Style(object):
         return TermString(style(instance, **self.kwargs))
 
 
-if PY2:
-    text_type = unicode  # noqa
-else:
-    text_type = str  # noqa
-
-
-class TermString(text_type):
+class TermString(str):
     """A string-like object that can be formatted with ANSI styles. Useful for
     styling strings within a string.format "template."
     """

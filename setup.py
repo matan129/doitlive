@@ -20,7 +20,7 @@ EXTRAS_REQUIRE = {
     "tests": ["pytest"],
     "lint": [
         "flake8==3.9.2",
-        'flake8-bugbear==20.11.1; python_version >= "3.5"',
+        'flake8-bugbear==20.11.1',
         "pre-commit==2.13.0",
     ],
 }
@@ -58,6 +58,7 @@ setup(
     author="Steven Loria",
     author_email="sloria1@gmail.com",
     url="https://github.com/sloria/doitlive",
+    python_requires=">=3.6",
     install_requires=INSTALL_REQUIRES,
     extras_require=EXTRAS_REQUIRE,
     license="MIT",
@@ -67,10 +68,6 @@ setup(
         "Intended Audience :: Developers",
         "License :: OSI Approved :: MIT License",
         "Natural Language :: English",
-        "Programming Language :: Python :: 2",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",

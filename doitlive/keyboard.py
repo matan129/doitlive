@@ -8,7 +8,6 @@ from tempfile import NamedTemporaryFile
 import click
 from click import getchar
 
-from doitlive.compat import ensure_utf8
 from doitlive.styling import echo, echo_prompt
 from doitlive.termutils import get_default_shell, raw_mode
 
@@ -79,7 +78,7 @@ def write_commands(fp, command, args):
     if args:
         for arg in args:
             line = "{command} {arg}\n".format(command=command, arg=arg)
-            fp.write(ensure_utf8(line))
+            fp.write(line)
     return None
 
 
@@ -87,7 +86,7 @@ def run_command(
     cmd, shell=None, aliases=None, envvars=None, extra_commands=None, test_mode=False
 ):
     shell = shell or get_default_shell()
-    command_as_list = shlex.split(ensure_utf8(cmd))
+    command_as_list = shlex.split(cmd)
     if len(command_as_list) and command_as_list[0] == "cd":
         cwd = os.getcwd()  # Save cwd
         directory = cmd.split()[1].strip()
@@ -116,10 +115,10 @@ def run_command(
             if extra_commands:
                 for command in extra_commands:
                     line = "{}\n".format(command)
-                    fp.write(ensure_utf8(line))
+                    fp.write(line)
 
             cmd_line = cmd + "\n"
-            fp.write(ensure_utf8(cmd_line))
+            fp.write(cmd_line)
             fp.flush()
             try:
                 if test_mode:

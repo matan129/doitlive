@@ -13,7 +13,6 @@ from click import secho, style
 from click_didyoumean import DYMGroup
 
 from doitlive.__version__ import __version__
-from doitlive.compat import ensure_utf8
 from doitlive.exceptions import SessionError
 from doitlive.keyboard import (
     RETURNS,
@@ -44,7 +43,7 @@ def write_directives(fp, directive, args):
     if args:
         for arg in args:
             line = "#doitlive {directive}: {arg}\n".format(directive=directive, arg=arg)
-            fp.write(ensure_utf8(line))
+            fp.write(line)
     return None
 
 
@@ -179,7 +178,7 @@ def run(
             continue
         is_comment = command.startswith("#")
         if not is_comment:
-            command_as_list = shlex.split(ensure_utf8(command))
+            command_as_list = shlex.split(command)
         else:
             command_as_list = None
         shell_match = SHELL_RE.match(command)
